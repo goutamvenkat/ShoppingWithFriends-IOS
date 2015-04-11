@@ -12,25 +12,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if (PFUser.currentUser() == nil) {
-            var logInViewController = PFLogInViewController()
-            logInViewController.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
-            
-            //            var logo = UILabel()
-            //            logo.text = "RideTime"
-            //            logInViewController.logInView.logo = logo
-            
-            
-            logInViewController.delegate = self
-            
-            
-            var signUpViewController = PFSignUpViewController()
-            //            signUpViewController.signUpView.logo = logo
-            signUpViewController.delegate = self
-            
-            logInViewController.signUpController = signUpViewController
-            
-            self.presentViewController(logInViewController, animated: true, completion: nil)
-            
+            loginSetup()
             
         }
     }
@@ -41,11 +23,11 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
         if (PFTwitterUtils.isLinkedWithUser(user)) {
             
-            var twitterUsername = PFTwitterUtils.twitter().screenName
+            var twitterUsername = PFTwitterUtils.twitter()!.screenName
             
-            PFUser.currentUser().username = twitterUsername
+            PFUser.currentUser()!.username = twitterUsername
             
-            PFUser.currentUser().saveEventually(nil)
+            PFUser.currentUser()!.saveEventually(nil)
             
         }
         
@@ -60,9 +42,9 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             
             var twitterUsername = PFTwitterUtils.twitter().screenName
             
-            PFUser.currentUser().username = twitterUsername
+            PFUser.currentUser()!.username = twitterUsername
             
-            PFUser.currentUser().saveEventually(nil)
+            PFUser.currentUser()!.saveEventually(nil)
             
         }
         

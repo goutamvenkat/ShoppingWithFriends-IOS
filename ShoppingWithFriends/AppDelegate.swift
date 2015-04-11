@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.setApplicationId("xnRG7E5e4NJdotEwXwxw756i2jclVNDEntRcRSdV",
             clientKey: "lFm5wKaTg1dZ0sH6jUgLYa7Zo8AK2HkbNX3mRCjD")
+        PFTwitterUtils.initializeWithConsumerKey("I4SFlk8NiT6cJwxM79t197AFi", consumerSecret: "PORswlTOQdpjStmMa6h03KKVwPRrio4mXVEYHNe8V0omfB7qio")
         return true
     }
 
