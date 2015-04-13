@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6A8E9B1E-E345-446E-811F-7193A4E40B3C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ShoppingWithFriends</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>155B2BE5D0A2EA54720A710920159E42102D6CFD</key>
+		<string>https://github.com/goutamvenkat/ShoppingWithFriends-IOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ShoppingWithFriends.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>155B2BE5D0A2EA54720A710920159E42102D6CFD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/goutamvenkat/ShoppingWithFriends-IOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>155B2BE5D0A2EA54720A710920159E42102D6CFD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>155B2BE5D0A2EA54720A710920159E42102D6CFD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ShoppingWithFriends-IOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
