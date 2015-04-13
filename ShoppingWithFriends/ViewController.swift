@@ -11,15 +11,21 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if (PFUser.currentUser() == nil) {
-            loginSetup()
-        }
+        loginSetup()
+
         
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var username = PFUser.currentUser().username
+        var queryToGetUserItems = PFQuery(className: "Items")
+        queryToGetUserItems.whereKey("username", equalTo: username)
+        var userInItemTable = queryToGetUserItems.getFirstObject()
+        
+        var userItems = userInItemTable["MyItems"] as NSDictionary
+        
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,6 +44,10 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             PFUser.currentUser()!.username = twitterUsername
             
             PFUser.currentUser()!.saveEventually(nil)
+            
+            if (!alreadyAUser(user)) {
+                addUserToTables(PFUser.currentUser())
+            }
             
         }
         
@@ -74,6 +84,42 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     @IBAction func logoutButton(sender: AnyObject) {
         PFUser.logOut()
         loginSetup()
+    }
+    func alreadyAUser(user : PFUser) -> Bool{
+        var query = PFUser.query()
+        query.whereKey("username", equalTo: user.username)
+        var queried = query.getFirstObject()
+        return queried != nil
+    }
+    func addUserToTables(user : PFUser) {
+        var friendsTable = PFObject(className: "Friends")
+        var allColumns = ["Friends", "FriendsRequested", "FriendsRequestsReceived"]
+        for column in allColumns {
+            friendsTable[column] = NSArray()
+        }
+        friendsTable["username"] = user.username
+        
+        var itemTable = PFObject(className: "Items")
+        itemTable["MyItems"] = [String: Double]()
+        itemTable["MyReports"] = []
+        itemTable["username"] = user.username
+        friendsTable.saveEventually({
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // success in saving
+            } else {
+                print(error.description)
+            }
+        })
+        itemTable.saveEventually({
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // success in saving
+            } else {
+                println(error.description)
+            }
+        })
+        
     }
     func loginSetup() {
         
