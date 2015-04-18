@@ -18,13 +18,14 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var username = PFUser.currentUser().username
         var queryToGetUserItems = PFQuery(className: "Items")
         queryToGetUserItems.whereKey("username", equalTo: username)
         var userInItemTable = queryToGetUserItems.getFirstObject()
         
-        var userItems = userInItemTable["MyItems"] as NSDictionary
+//        var userItems = userInItemTable["MyItems"] as NSDictionary
         
         return 1
     }
@@ -50,7 +51,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             }
             
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -69,6 +69,10 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
+        println(PFUser.currentUser().username)
+        if (!alreadyAUser(user)) {
+            addUserToTables(PFUser.currentUser())
+        }
     }
     func signUpViewController(signUpController: PFSignUpViewController!, didFailToSignUpWithError error: NSError!) {
         println("Failed to sign up...")
@@ -85,12 +89,14 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         PFUser.logOut()
         loginSetup()
     }
+    
     func alreadyAUser(user : PFUser) -> Bool{
-        var query = PFUser.query()
-        query.whereKey("username", equalTo: user.username)
+        var query = PFQuery(className:"Friends")
+        query.whereKey("username", equalTo:user.username)
         var queried = query.getFirstObject()
         return queried != nil
     }
+    
     func addUserToTables(user : PFUser) {
         var friendsTable = PFObject(className: "Friends")
         var allColumns = ["Friends", "FriendsRequested", "FriendsRequestsReceived"]
@@ -111,14 +117,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
                 print(error.description)
             }
         })
-        itemTable.saveEventually({
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                // success in saving
-            } else {
-                println(error.description)
-            }
-        })
+        itemTable.save()
+//        itemTable.saveEventually({
+//            (success: Bool, error: NSError!) -> Void in
+//            if (success) {
+//                // success in saving
+//            } else {
+//                println(error.description)
+//            }
+//        })
         
     }
     func loginSetup() {
