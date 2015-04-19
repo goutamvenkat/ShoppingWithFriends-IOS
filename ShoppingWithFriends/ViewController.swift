@@ -4,6 +4,7 @@ import ParseUI
 
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource {
     
+    //@IBOutlet weak var friends: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -128,6 +129,18 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 //        })
         
     }
+    
+    // Prepared to transfer User information to FriendListTableVC
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "viewFriends"){
+            let friendListTableVC:FriendListTableViewController = segue.destinationViewController as FriendListTableViewController
+            friendListTableVC.currentUser = PFUser.currentUser().username
+            println(PFUser.currentUser().username)
+            println("go to friend success")
+        }
+    }
+    
     func loginSetup() {
         
         if (PFUser.currentUser() == nil) {

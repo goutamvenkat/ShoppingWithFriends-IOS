@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ACw-tx-AZJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C2513" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ACw-tx-AZJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -8,21 +8,35 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eTl-Dz-tPd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainTableCell" id="Xuc-FE-djx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xuc-FE-djx" id="d7b-rC-2KX">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <navigationItem key="navigationItem" id="L2T-AO-0Zr">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="YWf-iW-baY">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="uME-oA-fel">
                             <connections>
-                                <action selector="logoutButton:" destination="vXZ-lx-hvc" id="AIB-rN-f9C"/>
+                                <action selector="logoutButton:" destination="vXZ-lx-hvc" id="4Ds-bH-IXl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="SUJ-NU-hHT">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pZj-YD-ZqL">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ihU-kx-OEg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qo0-mI-4CO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Friends">
+                                <state key="normal" title="Friend">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Maa-85-q3j" kind="show" id="TAU-xV-Y16"/>
+                                    <segue destination="YY9-BB-SN8" kind="show" identifier="viewFriends" id="R0D-by-C2f"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -30,34 +44,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456" y="619"/>
+            <point key="canvasLocation" x="3417" y="616"/>
         </scene>
-        <!--Friends Table View Controller-->
-        <scene sceneID="cyb-ns-KEa">
+        <!--Friend List Table View Controller-->
+        <scene sceneID="jVv-xB-qgB">
             <objects>
-                <viewController id="Maa-85-q3j" customClass="FriendsTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jov-jX-FN6">
+                <viewController id="YY9-BB-SN8" customClass="FriendListTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mFO-oq-nUQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" id="rGP-gv-2Jy">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendsCell" id="Wrv-CV-gF1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rGP-gv-2Jy" id="9vP-wk-xWL">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wrv-CV-gF1" id="dB5-jF-Q3B">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Maa-85-q3j" id="Ce2-Vt-7uo"/>
-                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WHA-sq-DBz"/>
+                    <navigationItem key="navigationItem" id="d1D-ij-rtC"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tuo-6k-LxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5l-9c-02F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5179.5" y="619"/>
+            <point key="canvasLocation" x="4224" y="-104"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKq-h6-ziT">
@@ -78,25 +89,25 @@
             <point key="canvasLocation" x="2644" y="619"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="21o-dg-MND">
+        <scene sceneID="CAm-hP-Yml">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEC-gQ-6Z5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="85C-XK-GcD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGS-cM-gnf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3PZ-Mk-1fy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Maa-85-q3j" kind="relationship" relationship="rootViewController" id="0j4-GL-1ea"/>
+                        <segue destination="YY9-BB-SN8" kind="relationship" relationship="rootViewController" id="AlP-Fg-Ygp"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WVu-71-j8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90d-bh-WGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261.5" y="619"/>
+            <point key="canvasLocation" x="4224" y="616"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TAU-xV-Y16"/>
+        <segue reference="R0D-by-C2f"/>
     </inferredMetricsTieBreakers>
 </document>
