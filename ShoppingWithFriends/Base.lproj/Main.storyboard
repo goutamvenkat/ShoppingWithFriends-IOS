@@ -4,6 +4,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--User Profile View Controller-->
+        <scene sceneID="Ze7-ty-3zP">
+            <objects>
+                <viewController id="mnx-SE-6Mw" customClass="UserProfileViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xU7-Vi-Znx"/>
+                        <viewControllerLayoutGuide type="bottom" id="fE7-UL-4oo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="prZ-Hs-4aE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2XY-tU-CvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="-254"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -44,16 +62,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3417" y="616"/>
+            <point key="canvasLocation" x="2616" y="468"/>
         </scene>
         <!--Friend List Table View Controller-->
         <scene sceneID="jVv-xB-qgB">
             <objects>
-                <viewController id="YY9-BB-SN8" customClass="FriendListTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Display Friends" id="YY9-BB-SN8" customClass="FriendListTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mFO-oq-nUQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="MZf-WP-Mi0">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="YY9-BB-SN8" id="hFI-Ca-mhb"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendsCell" id="Wrv-CV-gF1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -64,11 +90,113 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="d1D-ij-rtC"/>
+                    <navigationItem key="navigationItem" id="d1D-ij-rtC">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Anj-Il-Ul1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wYm-dN-3WR">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Friends">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2Xi-s1-Spm" kind="show" identifier="findFriends" id="R6K-xm-4MI"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="AYt-BU-487" id="O1S-l3-EW5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5l-9c-02F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="AYt-BU-487">
+                    <connections>
+                        <outlet property="delegate" destination="YY9-BB-SN8" id="t46-Jv-FkX"/>
+                        <outlet property="searchBar" destination="MZf-WP-Mi0" id="zNb-Fq-Mix"/>
+                        <outlet property="searchContentsController" destination="YY9-BB-SN8" id="Ufb-As-IBn"/>
+                        <outlet property="searchResultsDataSource" destination="YY9-BB-SN8" id="Zgq-Kd-NQb"/>
+                        <outlet property="searchResultsDelegate" destination="YY9-BB-SN8" id="Bge-9h-qBM"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4224" y="-104"/>
+            <point key="canvasLocation" x="3459" y="-252"/>
+        </scene>
+        <!--Find Friends View Controller-->
+        <scene sceneID="ACr-DI-Tbf">
+            <objects>
+                <viewController id="2Xi-s1-Spm" customClass="FindFriendsViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dIZ-Gz-lzo"/>
+                        <viewControllerLayoutGuide type="bottom" id="y7z-H2-9Sf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mAN-Jn-pyn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIO-en-5Mm">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="pao-De-R8j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pao-De-R8j"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="pao-De-R8j"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="718-VD-VgU">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mnx-SE-6Mw" kind="show" id="4I6-gu-3XC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UIO-en-5Mm" firstAttribute="top" secondItem="dIZ-Gz-lzo" secondAttribute="bottom" constant="107" id="0b3-l7-FRN"/>
+                            <constraint firstAttribute="centerX" secondItem="718-VD-VgU" secondAttribute="centerX" id="9od-w5-X5V"/>
+                            <constraint firstAttribute="centerX" secondItem="UIO-en-5Mm" secondAttribute="centerX" id="JNt-gF-WC0"/>
+                            <constraint firstItem="718-VD-VgU" firstAttribute="top" secondItem="UIO-en-5Mm" secondAttribute="bottom" constant="69" id="Qex-Vh-9Em"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="UIO-en-5Mm"/>
+                                <exclude reference="718-VD-VgU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0b3-l7-FRN"/>
+                                <exclude reference="JNt-gF-WC0"/>
+                                <exclude reference="9od-w5-X5V"/>
+                                <exclude reference="Qex-Vh-9Em"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="UIO-en-5Mm"/>
+                                <include reference="718-VD-VgU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0b3-l7-FRN"/>
+                                <include reference="JNt-gF-WC0"/>
+                                <include reference="9od-w5-X5V"/>
+                                <include reference="Qex-Vh-9Em"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyN-j3-Nj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4155" y="-252"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKq-h6-ziT">
@@ -86,7 +214,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5j-sh-Hn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644" y="619"/>
+            <point key="canvasLocation" x="1842" y="471"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CAm-hP-Yml">
@@ -104,10 +232,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90d-bh-WGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4224" y="616"/>
+            <point key="canvasLocation" x="3423" y="468"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="R0D-by-C2f"/>
+        <segue reference="AlP-Fg-Ygp"/>
     </inferredMetricsTieBreakers>
 </document>

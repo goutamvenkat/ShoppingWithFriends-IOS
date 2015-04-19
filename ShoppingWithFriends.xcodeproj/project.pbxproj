@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */; };
+		2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */; };
+		2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */; };
 		41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */; };
 		41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F111AD9C7FF00A0E744 /* ViewController.swift */; };
 		41012F151AD9C7FF00A0E744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41012F131AD9C7FF00A0E744 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		2E8F9AED1AE354020047F008 /* ShoppingWithFriends-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShoppingWithFriends-Bridging-Header.h"; sourceTree = "<group>"; };
+		2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
+		2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		41012F0A1AD9C7FF00A0E744 /* ShoppingWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41012F0E1AD9C7FF00A0E744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */,
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
+				2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */,
+				2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */,
 				2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */,
 				41012F161AD9C7FF00A0E744 /* Images.xcassets */,
 				41012F181AD9C7FF00A0E744 /* LaunchScreen.xib */,
@@ -294,6 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */,
+				2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */,
+				2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */,
 				41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */,
 				41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */,
 			);

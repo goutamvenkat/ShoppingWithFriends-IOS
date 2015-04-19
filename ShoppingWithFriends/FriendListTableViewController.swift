@@ -8,20 +8,15 @@
 
 import UIKit
 
-class FriendListTableViewController: UITableViewController {
-
+class FriendListTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
+    
     var currentUser: String = ""
     var result: PFObject!
     var friends: Array<String> = []
+    var filteredFriends = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         var query = PFQuery(className:"Friends")
         query.whereKey("username", equalTo:currentUser)
@@ -29,42 +24,55 @@ class FriendListTableViewController: UITableViewController {
         friends = result["Friends"] as Array<String>
         //var hi:String = friends[1]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//    // MARK: - Table view data source
-//
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
+    func filterContentForSearchText(searchText:String){
+        self.filteredFriends = self.friends.filter({(friendUser: String)-> Bool in
+            let stringMatch = friendUser.rangeOfString(searchText)
+            return stringMatch != nil ? true : false
+        })
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as UITableViewCell
-        for(var index = 0; index < friends.count; index++){
-            var hi = friends[indexPath.row]
-            cell.textLabel?.text = hi
-            
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as UITableViewCell
+        var alreadyFriends: String
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            alreadyFriends = filteredFriends[indexPath.row]
+            cell.textLabel?.text = alreadyFriends
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
-        //cell.textLabel?.text = currentUser
+        if(friends.count==0){
+            cell.textLabel?.text = "You currently do not have any friends"
+        }
+        else{
+            alreadyFriends = friends[indexPath.row]
+            cell.textLabel?.text = alreadyFriends
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.filteredFriends.count
+        }
+        if(friends.count==0){
+            return 1
+        }
         return friends.count
-//        return 1
     }
-    
-    
-//    tableView
-//    tableView
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
 }
