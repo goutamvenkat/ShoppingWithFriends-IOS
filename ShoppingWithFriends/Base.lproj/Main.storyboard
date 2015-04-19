@@ -92,14 +92,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="d1D-ij-rtC">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Anj-Il-Ul1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wYm-dN-3WR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wYm-dN-3WR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Friends">
+                                <state key="normal" image="Add Friend">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Xi-s1-Spm" kind="show" identifier="findFriends" id="R6K-xm-4MI"/>
+                                    <segue destination="PJ8-wN-26l" kind="show" identifier="searchForFriends" id="WyO-xe-Xym"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -121,82 +121,49 @@
             </objects>
             <point key="canvasLocation" x="3459" y="-252"/>
         </scene>
-        <!--Find Friends View Controller-->
-        <scene sceneID="ACr-DI-Tbf">
+        <!--Find Friends Table View Controller-->
+        <scene sceneID="MrU-g5-JDG">
             <objects>
-                <viewController id="2Xi-s1-Spm" customClass="FindFriendsViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dIZ-Gz-lzo"/>
-                        <viewControllerLayoutGuide type="bottom" id="y7z-H2-9Sf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mAN-Jn-pyn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIO-en-5Mm">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="178" id="pao-De-R8j"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="pao-De-R8j"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="pao-De-R8j"/>
-                                    </mask>
-                                </variation>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="718-VD-VgU">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="mnx-SE-6Mw" kind="show" id="4I6-gu-3XC"/>
-                                </connections>
-                            </button>
-                        </subviews>
+                <viewController id="PJ8-wN-26l" customClass="FindFriendsTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IWH-Sg-xJL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UIO-en-5Mm" firstAttribute="top" secondItem="dIZ-Gz-lzo" secondAttribute="bottom" constant="107" id="0b3-l7-FRN"/>
-                            <constraint firstAttribute="centerX" secondItem="718-VD-VgU" secondAttribute="centerX" id="9od-w5-X5V"/>
-                            <constraint firstAttribute="centerX" secondItem="UIO-en-5Mm" secondAttribute="centerX" id="JNt-gF-WC0"/>
-                            <constraint firstItem="718-VD-VgU" firstAttribute="top" secondItem="UIO-en-5Mm" secondAttribute="bottom" constant="69" id="Qex-Vh-9Em"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="UIO-en-5Mm"/>
-                                <exclude reference="718-VD-VgU"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="0b3-l7-FRN"/>
-                                <exclude reference="JNt-gF-WC0"/>
-                                <exclude reference="9od-w5-X5V"/>
-                                <exclude reference="Qex-Vh-9Em"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="UIO-en-5Mm"/>
-                                <include reference="718-VD-VgU"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="0b3-l7-FRN"/>
-                                <include reference="JNt-gF-WC0"/>
-                                <include reference="9od-w5-X5V"/>
-                                <include reference="Qex-Vh-9Em"/>
-                            </mask>
-                        </variation>
-                    </view>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="j6r-PT-f29">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="PJ8-wN-26l" id="zGQ-xr-c8x"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchFriendCell" id="wXR-cR-1qg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wXR-cR-1qg" id="B0l-YN-lfu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="VYa-iC-2Nb"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="TPs-89-QxN" id="KAh-20-rSE"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tyN-j3-Nj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPJ-wL-uE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="TPs-89-QxN">
+                    <connections>
+                        <outlet property="delegate" destination="PJ8-wN-26l" id="UgG-Ts-mvy"/>
+                        <outlet property="searchBar" destination="j6r-PT-f29" id="BHy-Id-ywb"/>
+                        <outlet property="searchContentsController" destination="PJ8-wN-26l" id="IHR-GP-bmS"/>
+                        <outlet property="searchResultsDataSource" destination="PJ8-wN-26l" id="lYI-Ww-Zbt"/>
+                        <outlet property="searchResultsDelegate" destination="PJ8-wN-26l" id="Z8L-js-rxt"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4155" y="-252"/>
+            <point key="canvasLocation" x="4251" y="-252"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKq-h6-ziT">
@@ -234,8 +201,30 @@
             </objects>
             <point key="canvasLocation" x="3423" y="468"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="efC-z7-JxB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nla-ms-mf8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ekp-Su-cSY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PJ8-wN-26l" kind="relationship" relationship="rootViewController" id="FtI-nk-dJW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efd-dD-Hol" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4155" y="471"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Add Friend" width="128" height="128"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AlP-Fg-Ygp"/>
+        <segue reference="WyO-xe-Xym"/>
     </inferredMetricsTieBreakers>
 </document>

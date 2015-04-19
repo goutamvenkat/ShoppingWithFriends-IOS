@@ -22,7 +22,6 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
         query.whereKey("username", equalTo:currentUser)
         result = query.getFirstObject()
         friends = result["Friends"] as Array<String>
-        //var hi:String = friends[1]
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,5 +73,14 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
             return 1
         }
         return friends.count
+    }
+    
+    // Prepared to transfer current User information to FindFriendTableVC
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "searchForFriends"){
+            let findFriendTableVC:FindFriendsTableViewController = segue.destinationViewController as FindFriendsTableViewController
+            findFriendTableVC.currentUserObject = PFUser.currentUser()
+            findFriendTableVC.currentUser = PFUser.currentUser().username
+        }
     }
 }
