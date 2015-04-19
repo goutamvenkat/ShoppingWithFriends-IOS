@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EA1FF091AE35B970086BEEF /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1FF081AE35B970086BEEF /* FriendsTableViewController.swift */; };
 		41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */; };
 		41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F111AD9C7FF00A0E744 /* ViewController.swift */; };
 		41012F151AD9C7FF00A0E744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41012F131AD9C7FF00A0E744 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EA1FF081AE35B970086BEEF /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		41012F0A1AD9C7FF00A0E744 /* ShoppingWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41012F0E1AD9C7FF00A0E744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */,
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
+				2EA1FF081AE35B970086BEEF /* FriendsTableViewController.swift */,
 				41012F161AD9C7FF00A0E744 /* Images.xcassets */,
 				41012F181AD9C7FF00A0E744 /* LaunchScreen.xib */,
 				41012F0D1AD9C7FF00A0E744 /* Supporting Files */,
@@ -290,6 +293,7 @@
 			files = (
 				41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */,
 				41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */,
+				2EA1FF091AE35B970086BEEF /* FriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +493,7 @@
 				41012F2B1AD9C7FF00A0E744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41012F2C1AD9C7FF00A0E744 /* Build configuration list for PBXNativeTarget "ShoppingWithFriendsTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +502,7 @@
 				41012F2E1AD9C7FF00A0E744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
