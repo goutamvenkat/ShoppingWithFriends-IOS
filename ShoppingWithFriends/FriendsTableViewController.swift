@@ -10,6 +10,7 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
 
+    var currentUser:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 

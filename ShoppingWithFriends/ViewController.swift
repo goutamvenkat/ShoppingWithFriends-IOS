@@ -128,6 +128,24 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 //        })
         
     }
+//    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier == "viewFriends"){
+//            let friendListTableVC:FriendsTableViewController = segue.destinationViewController as FriendsTableViewController
+////            friendListTableVC.currentUser = PFUser.currentUser().username
+//            friendListTableVC.currentUser = "hi"
+//        }
+//    }
+//    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "viewFriends"){
+            let friendListTableVC:FriendsTableViewController = segue.destinationViewController as FriendsTableViewController
+            //            friendListTableVC.currentUser = PFUser.currentUser().username
+            friendListTableVC.currentUser = "hi"
+        }
+    }
+
+    
     func loginSetup() {
         
         if (PFUser.currentUser() == nil) {

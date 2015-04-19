@@ -22,7 +22,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DEC-gQ-6Z5" kind="show" id="csC-gG-e4i"/>
+                                    <segue destination="DEC-gQ-6Z5" kind="show" identifier="viewFriends" id="csC-gG-e4i"/>
                                 </connections>
                             </button>
                         </barButtonItem>
