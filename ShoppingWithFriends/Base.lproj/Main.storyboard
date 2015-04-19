@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C2513" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ACw-tx-AZJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ACw-tx-AZJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DEC-gQ-6Z5" kind="show" identifier="viewFriends" id="csC-gG-e4i"/>
+                                    <segue destination="Maa-85-q3j" kind="show" id="TAU-xV-Y16"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -37,7 +37,7 @@
             <objects>
                 <viewController id="Maa-85-q3j" customClass="FriendsTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jov-jX-FN6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -49,6 +49,9 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Maa-85-q3j" id="Ce2-Vt-7uo"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="WHA-sq-DBz"/>
                 </viewController>
@@ -93,4 +96,7 @@
             <point key="canvasLocation" x="4261.5" y="619"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TAU-xV-Y16"/>
+    </inferredMetricsTieBreakers>
 </document>
