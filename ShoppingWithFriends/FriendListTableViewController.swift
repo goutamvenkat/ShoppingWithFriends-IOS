@@ -29,6 +29,8 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    /* filter the friends array based on searchText (which is the search string entered by the user),
+    and will put the results in the filteredFriends array. */
     func filterContentForSearchText(searchText:String){
         self.filteredFriends = self.friends.filter({(friendUser: String)-> Bool in
             let stringMatch = friendUser.rangeOfString(searchText)
@@ -36,29 +38,32 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
         })
     }
     
+    /* runs the text filtering function whenever the user changes the search string in the search bar. */
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
         self.filterContentForSearchText(searchString)
         return true
     }
     
+    /* handle the changes in the Scope Bar input.  */
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
     }
     
+    /* tests to see if the currently displayed tableView is the search table or the normal table. If it is indeed the search table, the data is taken from the filteredFriends array. Otherwise, the data comes from the full list of items. */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as UITableViewCell
         var alreadyFriends: String
         if tableView == self.searchDisplayController!.searchResultsTableView {
             alreadyFriends = filteredFriends[indexPath.row]
-            cell.textLabel?.text = alreadyFriends
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
+        else{
+            alreadyFriends = friends[indexPath.row]
         }
         if(friends.count==0){
             cell.textLabel?.text = "You currently do not have any friends"
         }
         else{
-            alreadyFriends = friends[indexPath.row]
             cell.textLabel?.text = alreadyFriends
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
@@ -69,10 +74,15 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
         if tableView == self.searchDisplayController!.searchResultsTableView {
             return self.filteredFriends.count
         }
-        if(friends.count==0){
+        else if(friends.count==0){
             return 1
+        }else{
+            return friends.count
         }
-        return friends.count
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("userDetail", sender: tableView)
     }
     
     // Prepared to transfer current User information to FindFriendTableVC
@@ -81,6 +91,20 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
             let findFriendTableVC:FindFriendsTableViewController = segue.destinationViewController as FindFriendsTableViewController
             findFriendTableVC.currentUserObject = PFUser.currentUser()
             findFriendTableVC.currentUser = PFUser.currentUser().username
+        }
+        if(segue.identifier == "userDetail"){
+            let userProfileVC:UserProfileViewController = segue.destinationViewController as UserProfileViewController
+            if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
+                let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
+                let destinationTitle = self.filteredFriends[indexPath.row]
+                userProfileVC.currentUser = destinationTitle
+//                userProfileVC.title = destinationTitle
+            } else {
+                let indexPath = self.tableView.indexPathForSelectedRow()!
+                let destinationTitle = self.friends[indexPath.row]
+//                userProfileVC.title = destinationTitle
+                userProfileVC.currentUser = destinationTitle
+            }
         }
     }
 }

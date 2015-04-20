@@ -10,10 +10,14 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
 
+    var currentUser:String = ""
+    @IBOutlet weak var username: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        username.text="Username: "+currentUser
     }
 
     override func didReceiveMemoryWarning() {

@@ -35,36 +35,42 @@ class FindFriendsTableViewController: UITableViewController, UISearchBarDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func filterContentForSearchText(searchText:String){
+    /* filter the notfriends array based on searchText (which is the search string entered by the user),
+    and will put the results in the filteredNotFriends array. */
+    func filterContentForSearchText(searchText:String, scope: String = "All"){
         self.filteredNotFriends = self.notFriends.filter({(notFriendUser: String)-> Bool in
-            let stringMatch = notFriendUser.rangeOfString(searchText)
-            return stringMatch != nil ? true : false
+            var categoryMatch = (scope == "All") || (notFriendUser == scope)
+            var stringMatch = notFriendUser.rangeOfString(searchText)
+            return categoryMatch && (stringMatch != nil)
         })
     }
     
+    /*  runs the text filtering function whenever the user changes the search string in the search bar. */
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
         self.filterContentForSearchText(searchString)
         return true
     }
     
+    /* handle the changes in the Scope Bar input. */
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
     }
     
+    /* tests to see if the currently displayed tableView is the search table or the normal table. If it is indeed the search table, the data is taken from the filteredNotFriends array. Otherwise, the data comes from the full list of items. */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("searchFriendCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("searchFriendCell") as UITableViewCell
         var notYetFriends: String
         if tableView == self.searchDisplayController!.searchResultsTableView {
             notYetFriends = filteredNotFriends[indexPath.row]
-            cell.textLabel?.text = notYetFriends
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
+        else{
+            notYetFriends = self.notFriends[indexPath.row]
         }
         if(self.notFriends.count==0){
             cell.textLabel?.text = "You currently do not have any friends"
         }
         else{
-            notYetFriends = self.notFriends[indexPath.row]
             cell.textLabel?.text = notYetFriends
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
@@ -75,10 +81,12 @@ class FindFriendsTableViewController: UITableViewController, UISearchBarDelegate
         if tableView == self.searchDisplayController!.searchResultsTableView {
             return self.filteredNotFriends.count
         }
-        if(self.notFriends.count==0){
+        else if(self.notFriends.count==0){
             return 1
         }
-        return notFriends.count
+        else{
+            return notFriends.count
+        }
     }
     
 }
