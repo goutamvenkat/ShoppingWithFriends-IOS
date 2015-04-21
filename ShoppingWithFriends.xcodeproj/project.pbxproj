@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */; };
+		2EA326EF1AE6007A00323BAC /* RequestItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */; };
+		2EA326F11AE6018800323BAC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326F01AE6018800323BAC /* Item.swift */; };
+		2EA326F31AE61E4B00323BAC /* RequestItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */; };
 		2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */; };
 		2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */; };
 		41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */; };
@@ -50,6 +53,9 @@
 /* Begin PBXFileReference section */
 		2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		2E8F9AED1AE354020047F008 /* ShoppingWithFriends-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShoppingWithFriends-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestItemViewController.swift; sourceTree = "<group>"; };
+		2EA326F01AE6018800323BAC /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestItemsViewController.swift; sourceTree = "<group>"; };
 		2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		41012F0A1AD9C7FF00A0E744 /* ShoppingWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +129,7 @@
 		41012F011AD9C7FF00A0E744 = {
 			isa = PBXGroup;
 			children = (
+				2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */,
 				41012F531AD9C8F700A0E744 /* Accounts.framework */,
 				41012F511AD9C8F300A0E744 /* Social.framework */,
 				41012F4F1AD9C89100A0E744 /* libsqlite3.dylib */,
@@ -163,6 +170,8 @@
 				41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */,
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
+				2EA326F01AE6018800323BAC /* Item.swift */,
+				2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */,
 				2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */,
 				2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */,
 				41012F161AD9C7FF00A0E744 /* Images.xcassets */,
@@ -301,7 +310,10 @@
 			files = (
 				2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */,
 				2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */,
+				2EA326F31AE61E4B00323BAC /* RequestItemsViewController.swift in Sources */,
 				2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */,
+				2EA326EF1AE6007A00323BAC /* RequestItemViewController.swift in Sources */,
+				2EA326F11AE6018800323BAC /* Item.swift in Sources */,
 				41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */,
 				41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */,
 			);

@@ -30,7 +30,7 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
         result = query.getFirstObject()
         friends = result["Friends"] as Array<String>
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,7 +92,13 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("userDetail", sender: tableView)
+        var pass:Bool = true
+        if(friends.count==0){
+            pass = false
+        }
+        if(pass){
+            self.performSegueWithIdentifier("userDetail", sender: tableView)
+        }
     }
     
     // Prepared to transfer current User information to FindFriendTableVC
@@ -103,18 +109,20 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
             findFriendTableVC.currentUser = PFUser.currentUser().username
             findFriendTableVC.friends = self.friends
         }
-        if(segue.identifier == "userDetail"){
-            let userProfileVC:UserProfileViewController = segue.destinationViewController as UserProfileViewController
-            if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
-                let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
-                let destinationTitle = self.filteredFriends[indexPath.row]
-                userProfileVC.displayUser = destinationTitle
-            } else {
-                let indexPath = self.tableView.indexPathForSelectedRow()!
-                let destinationTitle = self.friends[indexPath.row]
-                userProfileVC.displayUser = destinationTitle
-                userProfileVC.currentUser = self.currentUser
+            if(segue.identifier == "userDetail"){
+                let userProfileVC:UserProfileViewController = segue.destinationViewController as UserProfileViewController
+                if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
+                    let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
+                    let destinationTitle = self.filteredFriends[indexPath.row]
+                    userProfileVC.displayUser = destinationTitle
+                } else {
+                    let indexPath = self.tableView.indexPathForSelectedRow()!
+                    let destinationTitle = self.friends[indexPath.row]
+                    userProfileVC.displayUser = destinationTitle
+                    userProfileVC.currentUser = self.currentUser
+                    
+                }
             }
-        }
+        
     }
 }

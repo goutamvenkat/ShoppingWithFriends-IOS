@@ -28,15 +28,7 @@ class FindFriendsTableViewController: UITableViewController, UISearchBarDelegate
         actualNotFriend = []
         filteredNotFriends = []
         super.viewWillAppear(animated)
-//        notFriends = []
-//        friends = []
-//        actualNotFriend = []
-//        filteredNotFriends = []
         self.tableView.reloadData()
-//        notFriends = []
-//        friends = []
-//        actualNotFriend = []
-//        filteredNotFriends = []
         var count:Int = 0
         var query = PFQuery(className:"Friends")
         var notFriendsPFObject = query.findObjects() as [PFObject]
@@ -134,7 +126,13 @@ class FindFriendsTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var pass:Bool = true
+        if(notFriends.count==0){
+            pass = false
+        }
+        if(pass){
         self.performSegueWithIdentifier("userDetail", sender: tableView)
+        }
     }
     
     // Prepared to transfer current User information to FindFriendTableVC

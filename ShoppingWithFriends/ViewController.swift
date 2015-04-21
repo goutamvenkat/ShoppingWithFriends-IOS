@@ -3,6 +3,7 @@ import Parse
 import ParseUI
 
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource {
+    @IBOutlet weak var continerView: UIView!
     
     //@IBOutlet weak var friends: UIButton!
     override func viewDidLoad() {
@@ -13,8 +14,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         loginSetup()
-
-        
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -117,14 +116,29 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             }
         })
         itemTable.save()
-//        itemTable.saveEventually({
-//            (success: Bool, error: NSError!) -> Void in
-//            if (success) {
-//                // success in saving
-//            } else {
-//                println(error.description)
-//            }
-//        })
+        
+        var newItemTable = PFObject(className: "newItem")
+        newItemTable["itemPrices"] = []
+        newItemTable["username"] = user.username
+        newItemTable["itemLocations"] = []
+        newItemTable["itemNames"] = []
+        friendsTable.saveEventually({
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // success in saving
+            } else {
+                print(error.description)
+            }
+        })
+        newItemTable.save()
+        //        itemTable.saveEventually({
+        //            (success: Bool, error: NSError!) -> Void in
+        //            if (success) {
+        //                // success in saving
+        //            } else {
+        //                println(error.description)
+        //            }
+        //        })
         
     }
     
@@ -136,6 +150,11 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             friendListTableVC.currentUser = PFUser.currentUser().username
             println(PFUser.currentUser().username)
             println("go to friend success")
+        }
+        if(segue.identifier == "requestItem"){
+            let requestItemVC:RequestItemViewController = segue.destinationViewController as RequestItemViewController
+            requestItemVC.currentUser = PFUser.currentUser().username
+            println("go to request item VC")
         }
     }
     
