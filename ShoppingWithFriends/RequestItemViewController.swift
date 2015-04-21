@@ -29,7 +29,8 @@ class RequestItemViewController: UIViewController {
         result = query.getFirstObject()
         itemNames = result["itemNames"] as Array<String>
         itemPrices = result["itemPrices"] as Array<Double>
-        itemLocations = result["itemLocations"] as Array<String>    }
+        itemLocations = result["itemLocations"] as Array<String>
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

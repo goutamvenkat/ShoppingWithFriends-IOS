@@ -15,6 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="KxH-L6-Vt2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ya5-yT-7Mw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KE2-Gf-CJa">
@@ -89,6 +90,10 @@
                                 <exclude reference="vWj-2e-yqw"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Idr-fa-NC1"/>
+                                <exclude reference="kl8-2q-HKD"/>
+                                <exclude reference="q5A-pC-czo"/>
+                                <exclude reference="zLL-yC-G9v"/>
                                 <exclude reference="4jY-u7-t6Y"/>
                                 <exclude reference="Q9Q-jZ-oiF"/>
                                 <exclude reference="1cB-Nf-BTO"/>
@@ -98,10 +103,6 @@
                                 <exclude reference="9kq-jR-f32"/>
                                 <exclude reference="lae-1j-OTc"/>
                                 <exclude reference="okl-Qh-2FP"/>
-                                <exclude reference="Idr-fa-NC1"/>
-                                <exclude reference="kl8-2q-HKD"/>
-                                <exclude reference="q5A-pC-czo"/>
-                                <exclude reference="zLL-yC-G9v"/>
                                 <exclude reference="Au5-OL-nmW"/>
                                 <exclude reference="ea0-9k-PHv"/>
                                 <exclude reference="Cb8-dz-Ti9"/>
@@ -118,6 +119,10 @@
                                 <include reference="vWj-2e-yqw"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Idr-fa-NC1"/>
+                                <include reference="kl8-2q-HKD"/>
+                                <include reference="q5A-pC-czo"/>
+                                <include reference="zLL-yC-G9v"/>
                                 <include reference="4jY-u7-t6Y"/>
                                 <include reference="Q9Q-jZ-oiF"/>
                                 <include reference="1cB-Nf-BTO"/>
@@ -127,10 +132,6 @@
                                 <include reference="9kq-jR-f32"/>
                                 <include reference="lae-1j-OTc"/>
                                 <include reference="okl-Qh-2FP"/>
-                                <include reference="Idr-fa-NC1"/>
-                                <include reference="kl8-2q-HKD"/>
-                                <include reference="q5A-pC-czo"/>
-                                <include reference="zLL-yC-G9v"/>
                                 <include reference="Au5-OL-nmW"/>
                                 <include reference="ea0-9k-PHv"/>
                                 <include reference="Cb8-dz-Ti9"/>
@@ -233,15 +234,15 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eTl-Dz-tPd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="i2U-zF-VnX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainTableCell" id="Xuc-FE-djx">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainCell" id="dbC-y3-xKu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xuc-FE-djx" id="d7b-rC-2KX">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dbC-y3-xKu" id="MY8-i0-uoc">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -277,10 +278,13 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="i2U-zF-VnX" id="gsg-4W-lPY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="468"/>
+            <point key="canvasLocation" x="2097" y="431"/>
         </scene>
         <!--Friends-->
         <scene sceneID="jVv-xB-qgB">
@@ -411,7 +415,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5j-sh-Hn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="471"/>
+            <point key="canvasLocation" x="1134" y="431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CAm-hP-Yml">
@@ -429,7 +433,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90d-bh-WGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="423"/>
+            <point key="canvasLocation" x="5193" y="423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="efC-z7-JxB">
@@ -447,7 +451,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efd-dD-Hol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4731" y="451"/>
+            <point key="canvasLocation" x="6567" y="451"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vrv-xB-GUq">
@@ -458,6 +462,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ARA-qb-XNi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nap-fG-YhT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -474,6 +479,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Yoz-LL-8Gb"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IjG-UA-ehL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -491,6 +497,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vIh-r4-v3W"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2fb-gk-sgr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMM-2N-six">
@@ -516,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUL-gK-INg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3598.5" y="290"/>
+            <point key="canvasLocation" x="5434.5" y="290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bk6-FL-met">
@@ -542,9 +549,9 @@
         <image name="Button" width="150" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EZ3-0S-kxH"/>
+        <segue reference="efT-MZ-8Sw"/>
+        <segue reference="WyO-xe-Xym"/>
         <segue reference="R0D-by-C2f"/>
         <segue reference="k4a-N4-4GL"/>
-        <segue reference="WyO-xe-Xym"/>
     </inferredMetricsTieBreakers>
 </document>

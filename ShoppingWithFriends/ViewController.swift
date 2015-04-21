@@ -2,19 +2,114 @@ import UIKit
 import Parse
 import ParseUI
 
-class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource {
+class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var continerView: UIView!
     
-    //@IBOutlet weak var friends: UIButton!
+    var result:PFObject!
+    var friends:Array<String> = []
+    var itemNames:Array<String> = []
+    var itemPrices:Array<Double> = []
+    var itemLocations:Array<String> = []
+    
+    @IBOutlet var tableView: UITableView!
+    
+    var itemNamesTotal:Array<String> = []
+    var itemPricesTotal:Array<Double> = []
+    var itemLocationsTotal:Array<String> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         loginSetup()
+        //        var query = PFQuery(className:"Friends")
+        //        query.whereKey("username", equalTo:PFUser.currentUser().username)
+        //        result = query.getFirstObject()
+        //        friends = result["Friends"] as Array<String>
+        //
+        //        for user in friends{
+        //            var friendQuery = PFQuery(className:"newItem")
+        //            friendQuery.whereKey("username", equalTo:PFUser.currentUser().username)
+        //            result = friendQuery.getFirstObject()
+        //            itemNames = result["itemNames"] as Array<String>
+        //            itemPrices = result["itemPrices"] as Array<Double>
+        //            itemLocations = result["itemLocations"] as Array<String>
+        //            var count = 0
+        //            println(itemNames.count)
+        //            println("is zero?")
+        //            if(itemNames.count>0){
+        //                //                println("I am here already"）
+        //                for item in itemNames{
+        //                    itemNamesTotal.insert(itemNames[count], atIndex: 0)
+        //                    itemPricesTotal.insert(itemPrices[count], atIndex: 0)
+        //                    itemLocationsTotal.insert(itemLocations[count], atIndex: 0)
+        //                    print(count)
+        //                    count++
+        //
+        //                }
+        //            }
+        //        }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        itemNamesTotal = []
+        itemPricesTotal = []
+        itemLocationsTotal = []
+        friends = []
+        itemNames = []
+        itemPrices = []
+        itemLocations = []
+        
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        
+        var query = PFQuery(className:"Friends")
+        query.whereKey("username", equalTo:PFUser.currentUser().username)
+        result = query.getFirstObject()
+        friends = result["Friends"] as Array<String>
+        
+        for user in friends{
+            var friendQuery = PFQuery(className:"newItem")
+            friendQuery.whereKey("username", equalTo:user)
+            result = friendQuery.getFirstObject()
+            itemNames = result["itemNames"] as Array<String>
+            itemPrices = result["itemPrices"] as Array<Double>
+            itemLocations = result["itemLocations"] as Array<String>
+            var count = 0
+            println(itemNames.count)
+            println("is zero?")
+            if(itemNames.count>0){
+                //                println("I am here already"）
+                //
+                //                for item in itemNames{
+                //                    itemNamesTotal.insert(itemNames[count], atIndex: 0)
+                //                    itemPricesTotal.insert(itemPrices[count], atIndex: 0)
+                //                    itemLocationsTotal.insert(itemLocations[count], atIndex: 0)
+                //                    print(count)
+                //                    count++
+                //
+                //                }
+                println("some error occur")
+                for name in itemNames{
+                    println(name)
+                    itemNamesTotal.insert(itemNames[count], atIndex: 0)
+                    itemPricesTotal.insert(itemPrices[count], atIndex: 0)
+                    itemLocationsTotal.insert(itemLocations[count], atIndex: 0)
+                    print(count)
+                    count++
+                    
+                }
+            }
+        }
+        println("v")
+    }
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -25,12 +120,34 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         queryToGetUserItems.whereKey("username", equalTo: username)
         var userInItemTable = queryToGetUserItems.getFirstObject()
         
-        return 1
+        if(self.itemNamesTotal.count==0){
+            return 1
+        }
+        else{
+            return self.itemNamesTotal.count
+        }
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        var cell = tableView.dequeueReusableCellWithIdentifier("mainCell", forIndexPath: indexPath) as UITableViewCell
+        var items: String = ""
+        if(self.itemNamesTotal.count==0){
+            cell.textLabel?.text = "Your friends request no items"
+        }
+        else{
+            var priceString:String = String(format:"%.1f", self.itemPricesTotal[indexPath.row])
+            items = "Name: " + self.itemNamesTotal[indexPath.row] + "   Max $: " + priceString
+        }
+        if(self.itemNamesTotal.count==0){
+            cell.textLabel?.text = "Your friends request no items"
+        }
+        else{
+            cell.textLabel?.text = items
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
         return cell
     }
+    
     func logInViewController(logInController: PFLogInViewController!, shouldBeginLoginWithUsername username: String!, password: String!) -> Bool {
         return (!username.isEmpty || !password.isEmpty)
     }
