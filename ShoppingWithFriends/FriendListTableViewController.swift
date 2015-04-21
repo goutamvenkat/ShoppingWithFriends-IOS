@@ -18,12 +18,19 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        friends=[]
+        filteredFriends=[]
         var query = PFQuery(className:"Friends")
         query.whereKey("username", equalTo:currentUser)
         result = query.getFirstObject()
         friends = result["Friends"] as Array<String>
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,9 +60,12 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
     /* tests to see if the currently displayed tableView is the search table or the normal table. If it is indeed the search table, the data is taken from the filteredFriends array. Otherwise, the data comes from the full list of items. */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as UITableViewCell
-        var alreadyFriends: String
+        var alreadyFriends: String = ""
         if tableView == self.searchDisplayController!.searchResultsTableView {
             alreadyFriends = filteredFriends[indexPath.row]
+        }
+        else if(friends.count==0){
+            cell.textLabel?.text = "You currently do not have any friends"
         }
         else{
             alreadyFriends = friends[indexPath.row]
@@ -91,19 +101,19 @@ class FriendListTableViewController: UITableViewController, UISearchBarDelegate,
             let findFriendTableVC:FindFriendsTableViewController = segue.destinationViewController as FindFriendsTableViewController
             findFriendTableVC.currentUserObject = PFUser.currentUser()
             findFriendTableVC.currentUser = PFUser.currentUser().username
+            findFriendTableVC.friends = self.friends
         }
         if(segue.identifier == "userDetail"){
             let userProfileVC:UserProfileViewController = segue.destinationViewController as UserProfileViewController
             if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
                 let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
                 let destinationTitle = self.filteredFriends[indexPath.row]
-                userProfileVC.currentUser = destinationTitle
-//                userProfileVC.title = destinationTitle
+                userProfileVC.displayUser = destinationTitle
             } else {
                 let indexPath = self.tableView.indexPathForSelectedRow()!
                 let destinationTitle = self.friends[indexPath.row]
-//                userProfileVC.title = destinationTitle
-                userProfileVC.currentUser = destinationTitle
+                userProfileVC.displayUser = destinationTitle
+                userProfileVC.currentUser = self.currentUser
             }
         }
     }

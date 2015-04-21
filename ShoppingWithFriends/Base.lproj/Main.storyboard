@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--User Profile View Controller-->
+        <!--User Profile-->
         <scene sceneID="Ze7-ty-3zP">
             <objects>
-                <viewController id="mnx-SE-6Mw" customClass="UserProfileViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Profile" id="mnx-SE-6Mw" customClass="UserProfileViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xU7-Vi-Znx"/>
                         <viewControllerLayoutGuide type="bottom" id="fE7-UL-4oo"/>
@@ -35,6 +35,18 @@
                                     <rect key="frame" x="90" y="318" width="237" height="21"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfw-Wg-FX0">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="x" backgroundImage="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="90" y="454" width="141" height="47"/>
+                                </variation>
+                                <connections>
+                                    <action selector="friendButtonClick:" destination="mnx-SE-6Mw" eventType="touchUpInside" id="Lqw-cI-BeE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -47,6 +59,7 @@
                             <mask key="subviews">
                                 <exclude reference="V8b-Ls-FOO"/>
                                 <exclude reference="6I4-0z-TuU"/>
+                                <exclude reference="jfw-Wg-FX0"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="1jz-cC-zJX"/>
@@ -59,6 +72,7 @@
                             <mask key="subviews">
                                 <include reference="V8b-Ls-FOO"/>
                                 <include reference="6I4-0z-TuU"/>
+                                <include reference="jfw-Wg-FX0"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="1jz-cC-zJX"/>
@@ -69,6 +83,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="friendButton" destination="jfw-Wg-FX0" id="wA5-f0-AsH"/>
                         <outlet property="username" destination="V8b-Ls-FOO" id="Ihu-UC-2vC"/>
                     </connections>
                 </viewController>
@@ -118,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="2013" y="468"/>
         </scene>
-        <!--Friend List Table View Controller-->
+        <!--Friends-->
         <scene sceneID="jVv-xB-qgB">
             <objects>
-                <viewController storyboardIdentifier="Display Friends" id="YY9-BB-SN8" customClass="FriendListTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Display Friends" title="Friends" id="YY9-BB-SN8" customClass="FriendListTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mFO-oq-nUQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -144,7 +159,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="d1D-ij-rtC">
+                    <navigationItem key="navigationItem" title="Friends" id="d1D-ij-rtC">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Anj-Il-Ul1">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wYm-dN-3WR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -176,7 +191,7 @@
             </objects>
             <point key="canvasLocation" x="3289.5" y="-299"/>
         </scene>
-        <!--Find Friends Table View Controller-->
+        <!--Add Friends-->
         <scene sceneID="MrU-g5-JDG">
             <objects>
                 <viewController id="PJ8-wN-26l" customClass="FindFriendsTableViewController" customModule="ShoppingWithFriends" customModuleProvider="target" sceneMemberID="viewController">
@@ -202,9 +217,10 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VYa-iC-2Nb"/>
+                    <navigationItem key="navigationItem" title="Add Friends" id="VYa-iC-2Nb"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="TPs-89-QxN" id="KAh-20-rSE"/>
+                        <segue destination="mnx-SE-6Mw" kind="show" identifier="userDetail" id="efT-MZ-8Sw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPJ-wL-uE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,9 +293,11 @@
     </scenes>
     <resources>
         <image name="Add Friend" width="128" height="128"/>
+        <image name="Button" width="150" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AlP-Fg-Ygp"/>
+        <segue reference="R0D-by-C2f"/>
         <segue reference="WyO-xe-Xym"/>
+        <segue reference="efT-MZ-8Sw"/>
     </inferredMetricsTieBreakers>
 </document>

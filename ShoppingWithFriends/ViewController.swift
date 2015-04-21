@@ -26,8 +26,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         queryToGetUserItems.whereKey("username", equalTo: username)
         var userInItemTable = queryToGetUserItems.getFirstObject()
         
-//        var userItems = userInItemTable["MyItems"] as NSDictionary
-        
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

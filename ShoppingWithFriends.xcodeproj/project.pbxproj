@@ -164,10 +164,10 @@
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
 				2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */,
-				2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */,
 				2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */,
 				41012F161AD9C7FF00A0E744 /* Images.xcassets */,
 				41012F181AD9C7FF00A0E744 /* LaunchScreen.xib */,
+				2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */,
 				41012F0D1AD9C7FF00A0E744 /* Supporting Files */,
 			);
 			path = ShoppingWithFriends;
