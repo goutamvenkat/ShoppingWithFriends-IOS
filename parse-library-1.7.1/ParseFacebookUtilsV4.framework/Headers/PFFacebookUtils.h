@@ -39,7 +39,8 @@ PF_ASSUME_NONNULL_BEGIN
  
  @param launchOptions The launchOptions as passed to [UIApplicationDelegate application:didFinishLaunchingWithOptions:].
  */
-+ (void)initializeFacebookWithApplicationLaunchOptions:(NSDictionary *)launchOptions;
+//+ (void)initializeFacebookWithApplicationLaunchOptions:(NSDictionary *)launchOptions;
++ (void)initializeFacebookWithApplicationLaunchOptions:(PF_NULLABLE NSDictionary *)launchOptions;
 
 /*!
  @abstract `FBSDKLoginManager` provides methods for configuring login behavior, default audience

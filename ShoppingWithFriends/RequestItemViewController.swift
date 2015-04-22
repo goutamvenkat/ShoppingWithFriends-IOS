@@ -16,20 +16,23 @@ class RequestItemViewController: UIViewController {
     var result:PFObject!
     var itemNames:Array<String> = []
     var itemPrices:Array<Double> = []
-    var itemLocations:Array<String> = []
+//    var itemLocations:Array<String> = []
     
-    @IBOutlet weak var nameInput: UITextField!
+    
+    
     @IBOutlet weak var priceInput: UITextField!
-    @IBOutlet weak var locationInput: UITextField!
+    @IBOutlet weak var nameInput: UITextField!
+//    @IBOutlet weak var locationInput: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         var query = PFQuery(className:"newItem")
-        query.whereKey("username", equalTo:currentUser)
+        query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
         result = query.getFirstObject()
-        itemNames = result["itemNames"] as Array<String>
-        itemPrices = result["itemPrices"] as Array<Double>
-        itemLocations = result["itemLocations"] as Array<String>
+        itemNames = result["itemNames"] as! Array<String>
+        itemPrices = result["itemPrices"] as! Array<Double>
+        
+//        itemLocations = result["itemLocations"] as! Array<String>
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,24 +43,27 @@ class RequestItemViewController: UIViewController {
     /* Saved the input item into the database */
     
     @IBAction func itemRequestSubmit(sender: AnyObject) {
-        itemNames.insert(nameInput.text, atIndex: 0)
-        let price = priceInput.text
-        let priceDouble:Double = (price as NSString).doubleValue
-        itemPrices.insert(priceDouble, atIndex: 0)
-        itemLocations.insert(locationInput.text, atIndex: 0)
-        result["itemNames"] = itemNames
-        result["itemPrices"] = itemPrices
-        result["itemLocations"] = itemLocations
-        result.save()
-        
-        var back:Bool = displayAlert()
+        if count(nameInput.text) > 0 {
+            itemNames.insert(nameInput.text, atIndex: 0)
+            let price = priceInput.text
+            let priceDouble:Double = (price as NSString).doubleValue
+            itemPrices.insert(priceDouble, atIndex: 0)
+            //        itemLocations.insert(locationInput.text, atIndex: 0)
+            result["itemNames"] = itemNames
+            result["itemPrices"] = itemPrices
+            //        result["itemLocations"] = itemLocations
+            result.save()
+            var back:Bool = displayAlert("Your request has been created successfully")
+        }
+        else {
+            var b: Bool = displayAlert("Request cannot be empty!")
+        }
     }
     
     /* Display an alert to notify user item has been added successfull, then go back to previous VC */
     
-    func displayAlert() -> Bool{
+    func displayAlert(message: String) -> Bool{
         let title = ""
-        let message = "Your request has been created successfully"
         let ok = "OK"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

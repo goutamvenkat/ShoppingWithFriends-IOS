@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */; };
 		2EA326EF1AE6007A00323BAC /* RequestItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */; };
-		2EA326F11AE6018800323BAC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326F01AE6018800323BAC /* Item.swift */; };
-		2EA326F31AE61E4B00323BAC /* RequestItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */; };
 		2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */; };
 		2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */; };
 		41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */; };
@@ -38,6 +36,8 @@
 		41012F501AD9C89100A0E744 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41012F4F1AD9C89100A0E744 /* libsqlite3.dylib */; };
 		41012F521AD9C8F300A0E744 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41012F511AD9C8F300A0E744 /* Social.framework */; };
 		41012F541AD9C8F700A0E744 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41012F531AD9C8F700A0E744 /* Accounts.framework */; };
+		41BF00851AE74FBA003C8D8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BF00841AE74FB9003C8D8C /* FBSDKCoreKit.framework */; };
+		41BF00891AE753BC003C8D8C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BF00881AE753BC003C8D8C /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,6 @@
 		2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendListTableViewController.swift; sourceTree = "<group>"; };
 		2E8F9AED1AE354020047F008 /* ShoppingWithFriends-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShoppingWithFriends-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestItemViewController.swift; sourceTree = "<group>"; };
-		2EA326F01AE6018800323BAC /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestItemsViewController.swift; sourceTree = "<group>"; };
 		2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		2ED50A4D1AE3875200A6CFBB /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		41012F0A1AD9C7FF00A0E744 /* ShoppingWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +85,8 @@
 		41012F4F1AD9C89100A0E744 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		41012F511AD9C8F300A0E744 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		41012F531AD9C8F700A0E744 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		41BF00841AE74FB9003C8D8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		41BF00881AE753BC003C8D8C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +99,13 @@
 				41012F501AD9C89100A0E744 /* libsqlite3.dylib in Frameworks */,
 				41012F4E1AD9C88700A0E744 /* libz.dylib in Frameworks */,
 				41012F4C1AD9C88000A0E744 /* SystemConfiguration.framework in Frameworks */,
+				41BF00851AE74FBA003C8D8C /* FBSDKCoreKit.framework in Frameworks */,
 				41012F4A1AD9C87800A0E744 /* StoreKit.framework in Frameworks */,
 				41012F481AD9C86E00A0E744 /* Security.framework in Frameworks */,
 				41012F461AD9C86800A0E744 /* QuartzCore.framework in Frameworks */,
 				41012F441AD9C85D00A0E744 /* MobileCoreServices.framework in Frameworks */,
 				41012F421AD9C85400A0E744 /* CoreLocation.framework in Frameworks */,
+				41BF00891AE753BC003C8D8C /* FBSDKLoginKit.framework in Frameworks */,
 				41012F401AD9C84A00A0E744 /* CoreGraphics.framework in Frameworks */,
 				41012F3E1AD9C84600A0E744 /* CFNetwork.framework in Frameworks */,
 				41012F3C1AD9C82700A0E744 /* AudioToolbox.framework in Frameworks */,
@@ -129,7 +131,8 @@
 		41012F011AD9C7FF00A0E744 = {
 			isa = PBXGroup;
 			children = (
-				2EA326F21AE61E4B00323BAC /* RequestItemsViewController.swift */,
+				41BF00881AE753BC003C8D8C /* FBSDKLoginKit.framework */,
+				41BF00841AE74FB9003C8D8C /* FBSDKCoreKit.framework */,
 				41012F531AD9C8F700A0E744 /* Accounts.framework */,
 				41012F511AD9C8F300A0E744 /* Social.framework */,
 				41012F4F1AD9C89100A0E744 /* libsqlite3.dylib */,
@@ -170,7 +173,6 @@
 				41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */,
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
-				2EA326F01AE6018800323BAC /* Item.swift */,
 				2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */,
 				2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */,
 				2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */,
@@ -310,10 +312,8 @@
 			files = (
 				2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */,
 				2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */,
-				2EA326F31AE61E4B00323BAC /* RequestItemsViewController.swift in Sources */,
 				2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */,
 				2EA326EF1AE6007A00323BAC /* RequestItemViewController.swift in Sources */,
-				2EA326F11AE6018800323BAC /* Item.swift in Sources */,
 				41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */,
 				41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */,
 			);
@@ -442,11 +442,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.7.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ShoppingWithFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShoppingWithFriends/ShoppingWithFriends-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "ShoppingWithFriends/ShoppingWithFriends-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -459,9 +462,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.7.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ShoppingWithFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShoppingWithFriends/ShoppingWithFriends-Bridging-Header.h";
 			};

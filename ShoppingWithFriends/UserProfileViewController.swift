@@ -41,8 +41,8 @@ class UserProfileViewController: UIViewController {
     func alreadyFriend(username:String, friendName:String)->Bool{
         var queryToGetUserItems = PFQuery(className: "Friends")
         queryToGetUserItems.whereKey("username", equalTo: username)
-        var userInItemTable = queryToGetUserItems.getFirstObject()
-        let friendList:Array<String> = userInItemTable["Friends"] as Array<String>
+        var userInItemTable: PFObject = queryToGetUserItems.getFirstObject()!
+        var friendList:Array<String> = userInItemTable["Friends"] as! Array<String>
         for item in friendList{
             if(item==friendName){
                 alreadyFriendBool = true
@@ -58,8 +58,8 @@ class UserProfileViewController: UIViewController {
     @IBAction func friendButtonClick(sender: AnyObject) {
         var queryToGetUserItems = PFQuery(className: "Friends")
         queryToGetUserItems.whereKey("username", equalTo: currentUser)
-        var userInItemTable = queryToGetUserItems.getFirstObject()
-        var friendList:Array<String> = userInItemTable["Friends"] as Array<String>
+        var userInItemTable:PFObject = queryToGetUserItems.getFirstObject()!
+        var friendList:Array<String> = userInItemTable["Friends"] as! Array<String>
         println("i reach here 1")
         if(alreadyFriendBool){
             println("i reach here 2")
