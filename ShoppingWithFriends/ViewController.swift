@@ -30,46 +30,53 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
     
     override func viewWillAppear(animated: Bool) {
-        itemNamesTotal = []
-        itemPricesTotal = []
-        itemLocationsTotal = []
-        friends = []
-        itemNames = []
-        itemPrices = []
-        itemLocations = []
-        
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         
         var query = PFQuery(className:"Friends")
+        var queryForUserItems = PFQuery(className: "newItem")
         if (PFUser.currentUser() != nil) {
             query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
+            queryForUserItems.whereKey("username", equalTo:PFUser.currentUser()!.username!)
             result = query.getFirstObject()
+            var userItemPF: PFObject! = queryForUserItems.getFirstObject()
             friends = result["Friends"] as! Array<String>
             for user in friends{
-                var friendQuery = PFQuery(className:"newReports")
+                var friendQuery = PFQuery(className:"newReport")
                 friendQuery.whereKey("username", equalTo:user)
                 result = friendQuery.getFirstObject()
                 itemNames = result["itemNames"] as! Array<String>
                 itemPrices = result["itemPrices"] as! Array<Double>
                 itemLocations = result["itemLocations"] as! Array<String>
+                var userItemNames: Array<String> = userItemPF["itemNames"] as! Array<String>
+                var userItemPrices: Array<Double> = userItemPF["itemPrices"] as! Array<Double>
                 var count = 0
                 if(itemNames.count>0){
-                    for name in itemNames{
-                        itemNamesTotal.insert(itemNames[count], atIndex: 0)
-                        itemPricesTotal.insert(itemPrices[count], atIndex: 0)
-                        itemLocationsTotal.insert(itemLocations[count], atIndex: 0)
+                    for name in itemNames {
+                        if foundNameAndPrice(name, count: count, userItemNames: userItemNames, userItemPrices: userItemPrices) {
+                            itemNamesTotal.insert(itemNames[count], atIndex: 0)
+                            itemPricesTotal.insert(itemPrices[count], atIndex: 0)
+                            itemLocationsTotal.insert(itemLocations[count], atIndex: 0)
+
+                        }
                         count++
-                        
                     }
                 }
             }
-        } else {
-            tableView.hidden = true
         }
-        
     }
     
+    func foundNameAndPrice(name: String, count: Int, userItemNames: Array<String>, userItemPrices: Array<Double>) -> Bool {
+        var reportedPrice: Double = itemPricesTotal[count]
+        var index: Int = 0
+        for n in userItemNames {
+            if name == n && userItemPrices[index] > reportedPrice {
+                return true
+            }
+            index++
+        }
+        return false
+    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
