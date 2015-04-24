@@ -2,7 +2,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate{
+class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource{
     @IBOutlet weak var continerView: UIView!
     
     var result:PFObject!
@@ -19,7 +19,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
+//        tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -31,8 +31,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
-        
         var query = PFQuery(className:"Friends")
         var queryForUserItems = PFQuery(className: "newItem")
         if (PFUser.currentUser() != nil) {
@@ -64,6 +62,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
                 }
             }
         }
+        self.tableView.reloadData()
     }
     
     func foundNameAndPrice(name: String, count: Int, userItemNames: Array<String>, userItemPrices: Array<Double>) -> Bool {
@@ -83,12 +82,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (PFUser.currentUser() != nil) {
-            var username: String! = PFUser.currentUser()!.username
-            var queryToGetUserItems = PFQuery(className: "Items")
-            queryToGetUserItems.whereKey("username", equalTo: username)
-            var userInItemTable = queryToGetUserItems.getFirstObject()
-        }
         return self.itemNamesTotal.count
     }
     
@@ -101,14 +94,16 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         else{
             var priceString:String = String(format:"%.1f", self.itemPricesTotal[indexPath.row])
             items = "Name: " + self.itemNamesTotal[indexPath.row] + "   Max $: " + priceString
-        }
-        if(self.itemNamesTotal.count==0){
-            cell.textLabel?.text = "Your friends have not found any items"
-        }
-        else{
             cell.textLabel?.text = items
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
+//        if(self.itemNamesTotal.count==0){
+//            cell.textLabel?.text = "Your friends have not found any items"
+//        }
+//        else{
+//            cell.textLabel?.text = items
+//            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+//        }
         return cell
     }
     
@@ -234,20 +229,28 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     // Prepared to transfer User information to FriendListTableVC
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "viewFriends"){
-            let friendListTableVC:FriendListTableViewController = segue.destinationViewController as! FriendListTableViewController
-            friendListTableVC.currentUser = PFUser.currentUser()!.username!
-            println(PFUser.currentUser()!.username!)
-            println("go to friend success")
-        }
-        if(segue.identifier == "requestItem"){
-            let requestItemVC:RequestItemViewController = segue.destinationViewController as! RequestItemViewController
-            requestItemVC.currentUser = PFUser.currentUser()!.username!
-            println("go to request item VC")
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier == "viewFriends"){
+//            let friendListTableVC:FriendListTableViewController = segue.destinationViewController as! FriendListTableViewController
+////            friendListTableVC.currentUser = PFUser.currentUser()!.username!
+//            println(PFUser.currentUser()!.username!)
+//            println("go to friend success")
+//        }
+//        if(segue.identifier == "requestItem"){
+//            let requestItemVC:RequestItemViewController = segue.destinationViewController as! RequestItemViewController
+//            requestItemVC.currentUser = PFUser.currentUser()!.username!
+//            println("go to request item VC")
+//        }
+//    }
     
+
+    @IBAction func addAction(sender: AnyObject) {
+        var alert = UIAlertController(title: "Item or Report?", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Item", style: UIAlertActionStyle.Default, handler: { action in self.performSegueWithIdentifier("requestItem", sender: self) }))
+        alert.addAction(UIAlertAction(title: "Report", style: UIAlertActionStyle.Default, handler: {action in self.performSegueWithIdentifier("reportItem", sender: self)}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     func loginSetup() {
         
         if (PFUser.currentUser() == nil) {

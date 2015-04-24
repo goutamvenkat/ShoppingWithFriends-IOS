@@ -38,6 +38,7 @@
 		41012F541AD9C8F700A0E744 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41012F531AD9C8F700A0E744 /* Accounts.framework */; };
 		41BF00851AE74FBA003C8D8C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BF00841AE74FB9003C8D8C /* FBSDKCoreKit.framework */; };
 		41BF00891AE753BC003C8D8C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BF00881AE753BC003C8D8C /* FBSDKLoginKit.framework */; };
+		82D4DA071AEA3AED00EBFACD /* ReportItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4DA061AEA3AED00EBFACD /* ReportItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		41012F531AD9C8F700A0E744 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		41BF00841AE74FB9003C8D8C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		41BF00881AE753BC003C8D8C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		82D4DA061AEA3AED00EBFACD /* ReportItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				41012F0F1AD9C7FF00A0E744 /* AppDelegate.swift */,
 				41012F111AD9C7FF00A0E744 /* ViewController.swift */,
 				41012F131AD9C7FF00A0E744 /* Main.storyboard */,
+				82D4DA061AEA3AED00EBFACD /* ReportItemViewController.swift */,
 				2EA326EE1AE6007A00323BAC /* RequestItemViewController.swift */,
 				2ED50A4B1AE386E200A6CFBB /* FindFriendsViewController.swift */,
 				2E8F9AEB1AE3252A0047F008 /* FriendListTableViewController.swift */,
@@ -313,6 +316,7 @@
 				2E8F9AEC1AE3252A0047F008 /* FriendListTableViewController.swift in Sources */,
 				2ED50A4E1AE3875200A6CFBB /* UserProfileViewController.swift in Sources */,
 				2ED50A4C1AE386E200A6CFBB /* FindFriendsViewController.swift in Sources */,
+				82D4DA071AEA3AED00EBFACD /* ReportItemViewController.swift in Sources */,
 				2EA326EF1AE6007A00323BAC /* RequestItemViewController.swift in Sources */,
 				41012F121AD9C7FF00A0E744 /* ViewController.swift in Sources */,
 				41012F101AD9C7FF00A0E744 /* AppDelegate.swift in Sources */,

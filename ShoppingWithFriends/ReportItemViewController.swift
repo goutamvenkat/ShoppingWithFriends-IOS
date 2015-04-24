@@ -1,38 +1,34 @@
 //
-//  RequestItemViewController.swift
+//  ReportItemViewController.swift
 //  ShoppingWithFriends
 //
-//  Created by Sylvia Chan on 4/20/15.
+//  Created by Goutam Venkatramanan on 4/24/15.
 //  Copyright (c) 2015 Venkatramanan, Goutam. All rights reserved.
 //
 
 import UIKit
 
-class RequestItemViewController: UIViewController {
+class ReportItemViewController: UIViewController {
     
-//    @IBOutlet weak var ffwf: UILabel!
-//    @IBOutlet weak var aa: UILabel!
     var currentUser: String = PFUser.currentUser()!.username!
     var result:PFObject!
     var itemNames:Array<String> = []
     var itemPrices:Array<Double> = []
-//    var itemLocations:Array<String> = []
+    var itemLocations:Array<String> = []
     
     
-    
-    @IBOutlet weak var priceInput: UITextField!
     @IBOutlet weak var nameInput: UITextField!
-//    @IBOutlet weak var locationInput: UITextField!
+    @IBOutlet weak var priceInput: UITextField!
+    @IBOutlet weak var locationInput: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var query = PFQuery(className:"newItem")
+        var query = PFQuery(className:"newReport")
         query.whereKey("username", equalTo:currentUser)
         result = query.getFirstObject()
         itemNames = result["itemNames"] as! Array<String>
         itemPrices = result["itemPrices"] as! Array<Double>
-        
-//        itemLocations = result["itemLocations"] as! Array<String>
+        itemLocations = result["itemLocations"] as! Array<String>
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,10 +44,10 @@ class RequestItemViewController: UIViewController {
             let price = priceInput.text
             let priceDouble:Double = (price as NSString).doubleValue
             itemPrices.insert(priceDouble, atIndex: 0)
-            //        itemLocations.insert(locationInput.text, atIndex: 0)
+            itemLocations.insert(locationInput.text, atIndex: 0)
             result["itemNames"] = itemNames
             result["itemPrices"] = itemPrices
-            //        result["itemLocations"] = itemLocations
+            result["itemLocations"] = itemLocations
             result.save()
             var back:Bool = displayAlert("Your request has been created successfully")
         }
@@ -80,3 +76,4 @@ class RequestItemViewController: UIViewController {
     
     
 }
+

@@ -10,7 +10,7 @@ import UIKit
 
 class FriendListTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    var currentUser: String = ""
+    var currentUser: String = PFUser.currentUser()!.username!
     var result: PFObject!
     var friends: Array<String> = []
     var filteredFriends = [String]()
